@@ -1,1 +1,1 @@
-mern exercises for embedded learning
+Create your portfolio page using HTML tags discussed in the class. 
