@@ -1,1 +1,1 @@
-mern exercises for embedded learning
+Update the same page using external style sheets or move the added styles to a CSS file and add it to the HTML page
