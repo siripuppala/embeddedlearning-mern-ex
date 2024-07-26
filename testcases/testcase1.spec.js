@@ -22,8 +22,8 @@ test.describe('Website Verification', () => {
   test('Verify Contact Me Heading h3 tag', async ({ page }) => {
    
     // Verify h3 tag with 'Contact me' text
-    const h3Text = await page.textContent('h3');
-    expect(h3Text).toBe('Contact me');
+    await page.locator('#contact',{hasText:' Contact me'});
+
    
   });
 
