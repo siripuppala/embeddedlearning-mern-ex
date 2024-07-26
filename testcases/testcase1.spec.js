@@ -9,11 +9,11 @@ test.describe('Bootstrap Verification along with Navbar and Layout Verification'
   test('Verify link tag with href to Bootstrap CSS and script tag with src to Bootstrap JS', async ({ page }) => {
    
     // Check if link tag with specific href exists
-    const linkTag = await page.$('link[href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"]');
+    const linkTag = await page.$("link[href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css']");
     expect(linkTag).not.toBeNull();
 
     // Check if script tag with specific src exists
-    const scriptTag = await page.$('script[src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"]');
+    const scriptTag = await page.$("script[src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js']");
     expect(scriptTag).not.toBeNull();
   });
 
@@ -103,7 +103,7 @@ test.describe('Bootstrap Verification along with Navbar and Layout Verification'
  const projectsDiv = await page.$('div#projects');
  expect(projectsDiv).not.toBeNull();
 
- const projectsIsVisible = await acadsDiv.isVisible();
+ const projectsIsVisible = await projectsDiv.isVisible();
  expect(projectsIsVisible).toBe(true);
 
  ////////////////////////////////////////////////////////
@@ -118,30 +118,13 @@ test.describe('Bootstrap Verification along with Navbar and Layout Verification'
   const contactDiv = await page.$('div#contact');
   expect(contactDiv).not.toBeNull();
 
-  const contactIsVisible = await acadsDiv.isVisible();
+  const contactIsVisible = await contactDiv.isVisible();
   expect(contactIsVisible).toBe(true);
 
 
  }); 
 
- test('Verify anchor link contact navigation', async ({ page }) => {
-
-  // Check if clicking on anchor with href="#contact" scrolls to div with id="contact"
-  const contactanchor = await page.$('a[href="#contact"]');
-  expect(contactanchor).not.toBeNull();
-
-  // Scroll to the anchor
-  await contactanchor.click();
-
-  // Verify that the div with id="acads" is now in the viewport
-  const contactDiv = await page.$('div#contact');
-  expect(contactDiv).not.toBeNull();
-
-  const contactIsVisible = await acadsDiv.isVisible();
-  expect(contactIsVisible).toBe(true);
-
-
- });  
+ 
 
 
 });
