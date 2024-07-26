@@ -1,23 +1,32 @@
 const { test, expect } = require('@playwright/test');
 
-test.describe('Header Tags Verification', () => {
-  test('Verify h1, h2, and h3 tags have specific text', async ({ page }) => {
-    // Navigate to the website
-    await page.goto('http://127.0.0.1:5500/index.html');
 
+test.beforeEach(async ({page}) => {
+  await page.goto('http://127.0.0.1:5500/index.html');
+
+});
+
+test.describe('Header Tag H1 Verification', () => {
+  test('Verify h1 tag has specific text', async ({ page }) => {
     // Verify h1 tag text
-    const h1Text = await page.textContent('h1');
+    const h1Text = await page.textContent('h1');    
     expect(h1Text).toBe('Jane Doe');
+  });
+});
 
-    // Verify h2 tag text
-    const h2Text = await page.textContent('h3');
-    expect(h2Text).toBe('Career Objective');
+test.describe('Header Tag h3 Verification', () => {
+  test('Verify h3 tag has specific text', async ({ page }) => {
 
-    // Verify h3 tag text
-    const h3Text = await page.textContent('h4');
-    expect(h3Text).toBe('Programming Languages');
+  // Verify h2 tag text
+  await page.locator('#career',{hasText:' Career Objective'});
+
+  });
+});
 
 
+test.describe('Table Tags Verification', () => {
+  test('Verify table tr and th', async ({ page }) => {
+   
     // Verify table structure
     const tableExists = await page.$('table');
     expect(tableExists).not.toBeNull();
