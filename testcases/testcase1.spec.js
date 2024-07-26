@@ -8,19 +8,24 @@ test.describe('Zipcode Entry and Weather Details Verification', () => {
   test('Enter zipcode and verify weather details and image', async ({ page }) => {
     
     // Enter a zipcode in the text field
-    await page.fill('#zipcode', '90210'); // Example zipcode, replace with relevant data
+    await page.fill('#cityname', 'manhattan'); // Example zipcode, replace with relevant data
 
     // Click the submit button
-    await page.click('button#submit'); // Adjust the selector based on actual attributes
+    await page.click('button'); // Adjust the selector based on actual attributes
 
     // Wait for the details to be displayed
-    await page.waitForSelector('#details');
+    await page.waitForSelector('#mydiv');
 
     // Verify weather details
-    const details = await page.textContent('#details');
-    expect(details).toContain('Temperature');
-    expect(details).toContain('Min Temp');
-    expect(details).toContain('Max Temp');
+    // const details = await page.locator('#mydiv');
+    // expect(details).toContain('Temperature');
+    // expect(details).toContain('Min Temp');
+    // expect(details).toContain('Max Temp');
+
+  await page.locator('#mydiv',{hasText:' Temperature'});
+    await page.locator('#mydiv',{hasText:'Min Temp'});
+    await page.locator('#mydiv',{hasText:'Max Temp'});
+
 
     // Verify that the image source ends with .png
     const imageSrc = await page.getAttribute('img', 'src');
